@@ -1,0 +1,21 @@
+/*
+ * cliente.h
+ *
+ *  Created on: 14 may. 2020
+ *      Author: Nahu_
+ */
+
+#ifndef CLIENTE_H_
+#define CLIENTE_H_
+
+typedef struct
+{
+	int id;
+	char nombre[51];
+	char apellido[51];
+
+
+}eCliente;
+
+
+#endif /* CLIENTE_H_ */
