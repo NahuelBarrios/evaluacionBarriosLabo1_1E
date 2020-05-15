@@ -6,7 +6,7 @@
 #include "prestamo.h"
 #include "informes.h"
 
-int altaPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo, int* contadorID,eCliente arrayCliente[],int sizeCliente)
+int realizarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo, int* contadorID,eCliente arrayCliente[],int sizeCliente)
 {
     int retorno=-1;
     int posicion;
@@ -36,11 +36,106 @@ int altaPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo, int* contadorID,eC
             arrayPrestamo[posicion].idCliente=bufferIdCliente;
             utn_getFloat("\nImporte: ","\nError",1,100000,1,100000,3,&arrayPrestamo[posicion].importePrestamo);
             utn_getUnsignedInt("\nCantidad de cuotas: ","\nError",1,sizeof(int),1,10000,3,&arrayPrestamo[posicion].cuotasPrestamo);
-            printf("\n\nId Prestamo: %d\nid Cliente: %d\nImporte: %.2f\nCant de cuotas: %d",
-            		arrayPrestamo[posicion].idPrestamo,arrayPrestamo[posicion].idCliente,arrayPrestamo[posicion].importePrestamo,arrayPrestamo[posicion].cuotasPrestamo);
+            strcpy(arrayPrestamo[posicion].estadoPrestamo,"EN PRESTAMO");
+            printf("\n\nId Prestamo: %d\nid Cliente: %d\nImporte: %.2f\nCant de cuotas: %d\nEstado de prestamo: %s",
+            		arrayPrestamo[posicion].idPrestamo,arrayPrestamo[posicion].idCliente,arrayPrestamo[posicion].importePrestamo,
+					arrayPrestamo[posicion].cuotasPrestamo,arrayPrestamo[posicion].estadoPrestamo);
             retorno=0;
         	}
         }
     }
     return retorno;
+}
+
+int saldarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente)
+{
+	int retorno = -1;
+	int idPrestamo;
+	int posicion;
+	int i;
+	int option;
+
+	if(arrayPrestamo != NULL && sizePrestamo>0 && arrayCliente != NULL && sizeCliente>0)
+	{
+		utn_getUnsignedInt("\nIngrese el id de prestamo: ","\nError.",1,sizeof(int),1,sizePrestamo,3,&idPrestamo);
+		if(buscarIdPrestamo(arrayPrestamo,sizePrestamo,idPrestamo,&posicion)==-1)
+		{
+			printf("\nNo Existe ese Id\n");
+		}
+		else
+		{
+			for(i=0;i<sizeCliente;i++)
+			{
+				if(arrayCliente[i].isEmptyCliente==0 && arrayCliente[i].idCliente == arrayPrestamo[posicion].idCliente)
+				{
+					printf("\nID: %d\nNombre: %s\nApellido: %s\nCuil: %s",
+							arrayCliente[i].idCliente,arrayCliente[i].nombreCliente,arrayCliente[i].apellidoCliente,arrayCliente[i].cuilCliente);
+				}
+			}
+
+
+			utn_getUnsignedInt("\nSu estado esta: \n1-Saldado\n2-Salir\nIngrese opcion: ","\nError.",1,sizeof(int),1,sizePrestamo,3,&option);
+			switch(option)
+			{
+			case 1:
+				strcpy(arrayPrestamo[idPrestamo].estadoPrestamo,"SALDADO");
+				printf("\nSu prestamo se encuentra SALDADO\n");
+				break;
+			case 2:
+				break;
+			default: printf("\nIngrese la opcion entre 1 o 2\n");
+
+			}
+		}
+
+		retorno = 0;
+	}
+
+	return retorno;
+}
+
+int reanudarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente)
+{
+	int retorno = -1;
+	int idPrestamo;
+	int posicion;
+	int i;
+	int option;
+
+	if(arrayPrestamo != NULL && sizePrestamo>0 && arrayCliente != NULL && sizeCliente>0)
+	{
+		utn_getUnsignedInt("\nIngrese el id de prestamo: ","\nError.",1,sizeof(int),1,sizePrestamo,3,&idPrestamo);
+		if(buscarIdPrestamo(arrayPrestamo,sizePrestamo,idPrestamo,&posicion)==-1)
+		{
+			printf("\nNo Existe ese Id\n");
+		}
+
+		else
+		{
+			for(i=0;i<sizeCliente;i++)
+			{
+				if(arrayCliente[i].isEmptyCliente==0 && arrayCliente[i].idCliente == arrayPrestamo[posicion].idCliente)
+				{
+					printf("\nID: %d\nNombre: %s\nApellido: %s\nCuil: %s",
+							arrayCliente[i].idCliente,arrayCliente[i].nombreCliente,arrayCliente[i].apellidoCliente,arrayCliente[i].cuilCliente);
+				}
+			}
+
+			utn_getUnsignedInt("\nSu estado esta: \n1-ACTIVO\n2-Salir\nIngrese opcion: ","\nError.",1,sizeof(int),1,sizePrestamo,3,&option);
+			switch(option)
+			{
+			case 1:
+				strcpy(arrayPrestamo[idPrestamo].estadoPrestamo,"ACTIVO");
+				printf("\nSu prestamo se encuentra ACTIVO\n");
+				break;
+			case 2:
+				break;
+			default: printf("\nIngrese la opcion entre 1 o 2\n");
+			}
+
+
+		}
+		retorno = 0;
+	}
+	return retorno;
 }

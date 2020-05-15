@@ -14,6 +14,7 @@ typedef struct
 	int idCliente;
 	float importePrestamo;
 	int cuotasPrestamo;
+	char estadoPrestamo[51]; //En prestamo || Saldado
 	int isEmptyPrestamo;
 
 }ePrestamo;
@@ -21,5 +22,7 @@ typedef struct
 int inicializarPrestamo(ePrestamo array[], int size);
 
 int buscarEmptyPrestamo(ePrestamo array[], int size, int* posicion);
+
+int buscarIdPrestamo(ePrestamo array[], int size, int valorBuscado, int* posicion);
 
 #endif /* PRESTAMO_H_ */

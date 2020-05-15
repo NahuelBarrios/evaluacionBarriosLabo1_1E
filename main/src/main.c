@@ -49,13 +49,21 @@ int main(void)
 			altaCliente(arrayCliente,QTY_CLIENTE,&idCliente);
 			break;
 		case 2:
+			listarCliente(arrayCliente,QTY_CLIENTE);
 			modificarCliente(arrayCliente,QTY_CLIENTE);
 			break;
 		case 3:
+			listarCliente(arrayCliente,QTY_CLIENTE);
 
 			break;
 		case 4:
-			altaPrestamo(arrayPrestamo,QTY_PRESTAMO,&idPrestamo,arrayCliente,QTY_CLIENTE);
+			realizarPrestamo(arrayPrestamo,QTY_PRESTAMO,&idPrestamo,arrayCliente,QTY_CLIENTE);
+			break;
+		case 5:
+			saldarPrestamo(arrayPrestamo,QTY_PRESTAMO,arrayCliente,QTY_CLIENTE);
+			break;
+		case 6:
+			reanudarPrestamo(arrayPrestamo,QTY_PRESTAMO,arrayCliente,QTY_CLIENTE);
 			break;
 
 		}

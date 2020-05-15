@@ -144,3 +144,25 @@ int buscarIdCliente(eCliente array[], int size, int valorBuscado, int* posicion)
 }
 
 //***********************************************************************************************************************************
+
+int listarCliente(eCliente array[], int size)
+{
+    int retorno=-1;
+    int i;
+    if(array!=NULL && size>=0)
+    {
+        for(i=0;i<size;i++)
+        {
+            if(array[i].isEmptyCliente==1)
+                continue;
+            else
+            {
+            	printf("\nID: %d\nNombre: %s\nApellido: %s\nCuil: %s",
+            	                   array[i].idCliente,array[i].nombreCliente,array[i].apellidoCliente,array[i].cuilCliente);
+            }
+        }
+        retorno=0;
+    }
+    return retorno;
+}
+

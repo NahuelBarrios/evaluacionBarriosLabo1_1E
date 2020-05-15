@@ -31,4 +31,5 @@ int modificarCliente(eCliente array[], int sizeArray);
 
 int buscarIdCliente(eCliente array[], int size, int valorBuscado, int* posicion);
 //***********************************************************************************************************************************
+int listarCliente(eCliente array[], int size);
 #endif /* CLIENTE_H_ */
