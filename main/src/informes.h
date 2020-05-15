@@ -14,4 +14,6 @@ int saldarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCli
 
 int reanudarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
 
+int imprimirClientes(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
+
 #endif /* INFORMES_H_ */

@@ -6,6 +6,8 @@
 #include "prestamo.h"
 #include "informes.h"
 
+
+//***********************************************************************************************************************************
 int realizarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo, int* contadorID,eCliente arrayCliente[],int sizeCliente)
 {
     int retorno=-1;
@@ -46,6 +48,7 @@ int realizarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo, int* contadorI
     }
     return retorno;
 }
+//***********************************************************************************************************************************
 
 int saldarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente)
 {
@@ -68,7 +71,7 @@ int saldarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCli
 			{
 				if(arrayCliente[i].isEmptyCliente==0 && arrayCliente[i].idCliente == arrayPrestamo[posicion].idCliente)
 				{
-					printf("\nID: %d\nNombre: %s\nApellido: %s\nCuil: %s",
+					printf("\n*********************************************\nID: %d\nNombre: %s\nApellido: %s\nCuil: %s\n*********************************************",
 							arrayCliente[i].idCliente,arrayCliente[i].nombreCliente,arrayCliente[i].apellidoCliente,arrayCliente[i].cuilCliente);
 				}
 			}
@@ -78,8 +81,8 @@ int saldarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCli
 			switch(option)
 			{
 			case 1:
-				strcpy(arrayPrestamo[idPrestamo].estadoPrestamo,"SALDADO");
-				printf("\nSu prestamo se encuentra SALDADO\n");
+				strcpy(arrayPrestamo[posicion].estadoPrestamo,"SALDADO");
+				printf("\nSu prestamo se encuentra: %s",arrayPrestamo[posicion].estadoPrestamo);
 				break;
 			case 2:
 				break;
@@ -93,7 +96,7 @@ int saldarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCli
 
 	return retorno;
 }
-
+//***********************************************************************************************************************************
 int reanudarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente)
 {
 	int retorno = -1;
@@ -116,7 +119,7 @@ int reanudarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayC
 			{
 				if(arrayCliente[i].isEmptyCliente==0 && arrayCliente[i].idCliente == arrayPrestamo[posicion].idCliente)
 				{
-					printf("\nID: %d\nNombre: %s\nApellido: %s\nCuil: %s",
+					printf("\n*********************************************\nID: %d\nNombre: %s\nApellido: %s\nCuil: %s\n*********************************************",
 							arrayCliente[i].idCliente,arrayCliente[i].nombreCliente,arrayCliente[i].apellidoCliente,arrayCliente[i].cuilCliente);
 				}
 			}
@@ -125,8 +128,8 @@ int reanudarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayC
 			switch(option)
 			{
 			case 1:
-				strcpy(arrayPrestamo[idPrestamo].estadoPrestamo,"ACTIVO");
-				printf("\nSu prestamo se encuentra ACTIVO\n");
+				strcpy(arrayPrestamo[posicion].estadoPrestamo,"ACTIVO");
+				printf("\nSu prestamo se encuentra: %s",arrayPrestamo[posicion].estadoPrestamo);
 				break;
 			case 2:
 				break;
@@ -134,6 +137,40 @@ int reanudarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayC
 			}
 
 
+		}
+		retorno = 0;
+	}
+	return retorno;
+}
+//***********************************************************************************************************************************
+
+int imprimirClientes(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente)
+{
+	int retorno = -1;
+	int i,j;
+
+	//Se imprimirá una lista de clientes con todos sus datos junto con la cantidad de préstamos activos que posee.
+
+	if(arrayPrestamo != NULL && sizePrestamo>0 && arrayCliente != NULL && sizeCliente>0)
+	{
+		for(i=0;i<sizePrestamo;i++)
+		{
+			if(arrayPrestamo[i].isEmptyPrestamo == 1)
+				continue;
+			if(strcmp(arrayPrestamo[i].estadoPrestamo,"ACTIVO") == 0)
+			{
+				for(j=0;j<sizeCliente;j++)
+				{
+					if( arrayCliente[j].isEmptyCliente == 1)
+						continue;
+					if(arrayPrestamo[i].idCliente == arrayCliente[j].idCliente)
+					{
+						printf("\n*********************************************\nID: %d\nNombre: %s\nApellido: %s\nCuil: %s\nid Prestamo: %d\nPrestamo: %s\n*********************************************",
+								arrayCliente[j].idCliente,arrayCliente[j].nombreCliente,arrayCliente[j].apellidoCliente,arrayCliente[j].cuilCliente,arrayPrestamo[i].idPrestamo,arrayPrestamo[i].estadoPrestamo);
+
+					}
+				}
+			}
 		}
 		retorno = 0;
 	}

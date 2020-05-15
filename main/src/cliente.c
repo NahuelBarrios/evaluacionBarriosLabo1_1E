@@ -145,6 +145,8 @@ int buscarIdCliente(eCliente array[], int size, int valorBuscado, int* posicion)
 
 //***********************************************************************************************************************************
 
+//***********************************************************************************************************************************
+
 int listarCliente(eCliente array[], int size)
 {
     int retorno=-1;
@@ -165,4 +167,3 @@ int listarCliente(eCliente array[], int size)
     }
     return retorno;
 }
-

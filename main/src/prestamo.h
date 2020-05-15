@@ -14,7 +14,7 @@ typedef struct
 	int idCliente;
 	float importePrestamo;
 	int cuotasPrestamo;
-	char estadoPrestamo[51]; //En prestamo || Saldado
+	char estadoPrestamo[51]; //En prestamo || Saldado || activo
 	int isEmptyPrestamo;
 
 }ePrestamo;
