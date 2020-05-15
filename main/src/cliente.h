@@ -14,6 +14,8 @@ typedef struct
 	char nombreCliente[51];
 	char apellidoCliente[51];
 	char cuilCliente[15];
+	int masPrestamoActivo;
+	int masPrestamoSaldo;
 	int isEmptyCliente;
 
 }eCliente;

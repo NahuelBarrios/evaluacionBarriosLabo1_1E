@@ -38,7 +38,6 @@ int realizarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo, int* contadorI
             arrayPrestamo[posicion].idCliente=bufferIdCliente;
             utn_getFloat("\nImporte: ","\nError",1,100000,1,100000,3,&arrayPrestamo[posicion].importePrestamo);
             utn_getUnsignedInt("\nCantidad de cuotas: ","\nError",1,sizeof(int),1,10000,3,&arrayPrestamo[posicion].cuotasPrestamo);
-            strcpy(arrayPrestamo[posicion].estadoPrestamo,"EN PRESTAMO");
             printf("\n\nId Prestamo: %d\nid Cliente: %d\nImporte: %.2f\nCant de cuotas: %d\nEstado de prestamo: %s",
             		arrayPrestamo[posicion].idPrestamo,arrayPrestamo[posicion].idCliente,arrayPrestamo[posicion].importePrestamo,
 					arrayPrestamo[posicion].cuotasPrestamo,arrayPrestamo[posicion].estadoPrestamo);
@@ -57,6 +56,8 @@ int saldarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCli
 	int posicion;
 	int i;
 	int option;
+	int acumuladorSaldo = 0;
+	int auxIdCliente = 0;
 
 	if(arrayPrestamo != NULL && sizePrestamo>0 && arrayCliente != NULL && sizeCliente>0)
 	{
@@ -72,7 +73,8 @@ int saldarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCli
 				if(arrayCliente[i].isEmptyCliente==0 && arrayCliente[i].idCliente == arrayPrestamo[posicion].idCliente)
 				{
 					printf("\n*********************************************\nID: %d\nNombre: %s\nApellido: %s\nCuil: %s\n*********************************************",
-							arrayCliente[i].idCliente,arrayCliente[i].nombreCliente,arrayCliente[i].apellidoCliente,arrayCliente[i].cuilCliente);
+								arrayCliente[i].idCliente,arrayCliente[i].nombreCliente,arrayCliente[i].apellidoCliente,arrayCliente[i].cuilCliente);
+					auxIdCliente= arrayCliente[i].idCliente;
 				}
 			}
 
@@ -83,6 +85,9 @@ int saldarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCli
 			case 1:
 				strcpy(arrayPrestamo[posicion].estadoPrestamo,"SALDADO");
 				printf("\nSu prestamo se encuentra: %s",arrayPrestamo[posicion].estadoPrestamo);
+				acumuladorSaldo = arrayCliente[auxIdCliente].masPrestamoSaldo + 1;
+				arrayCliente[auxIdCliente].masPrestamoSaldo = acumuladorSaldo;
+				printf("\nContReclamos: %d",arrayCliente[auxIdCliente].masPrestamoSaldo);
 				break;
 			case 2:
 				break;
@@ -104,6 +109,8 @@ int reanudarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayC
 	int posicion;
 	int i;
 	int option;
+	int acumuladorActivos = 0;
+	int auxIdCliente = 0;
 
 	if(arrayPrestamo != NULL && sizePrestamo>0 && arrayCliente != NULL && sizeCliente>0)
 	{
@@ -121,6 +128,7 @@ int reanudarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayC
 				{
 					printf("\n*********************************************\nID: %d\nNombre: %s\nApellido: %s\nCuil: %s\n*********************************************",
 							arrayCliente[i].idCliente,arrayCliente[i].nombreCliente,arrayCliente[i].apellidoCliente,arrayCliente[i].cuilCliente);
+					auxIdCliente= arrayCliente[i].idCliente;
 				}
 			}
 
@@ -130,6 +138,9 @@ int reanudarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayC
 			case 1:
 				strcpy(arrayPrestamo[posicion].estadoPrestamo,"ACTIVO");
 				printf("\nSu prestamo se encuentra: %s",arrayPrestamo[posicion].estadoPrestamo);
+				acumuladorActivos = arrayCliente[auxIdCliente].masPrestamoActivo + 1;
+				arrayCliente[auxIdCliente].masPrestamoActivo = acumuladorActivos;
+				printf("\nContReclamos: %d",arrayCliente[auxIdCliente].masPrestamoActivo);
 				break;
 			case 2:
 				break;
@@ -175,12 +186,13 @@ int imprimirClientes(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayC
 	return retorno;
 }
 
+//***********************************************************************************************************************************
+
 int imprimirPrestamos(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente)
 {
 	int retorno = -1;
 	int i,j;
 
-	//Se imprimirá una lista de préstamos activos con todos sus datos junto con el c.u.i.l. del cliente correspondiente.
 	if(arrayPrestamo != NULL && sizePrestamo>0 && arrayCliente != NULL && sizeCliente>0)
 	{
 		for(i=0;i<sizePrestamo;i++)
@@ -206,5 +218,73 @@ int imprimirPrestamos(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente array
 		retorno = 0;
 	}
 
+	return retorno;
+}
+
+//***********************************************************************************************************************************
+
+int informeClientes(eCliente arrayCliente[],int sizeCliente)
+{
+	int retorno = -1;
+	int option = 0;
+	int j;
+	int mayorCliente = 0;
+	char nombre[51];
+	char apellido[51];
+	int idCliente;
+	char cuil[51];
+
+	if(arrayCliente != NULL && sizeCliente>0)
+	{
+		//a) Cliente con más préstamos activos.
+		//b) Cliente con más préstamos saldados.
+		utn_getUnsignedInt("\nSu estado esta: \n1-Cliente con más préstamos activos.\n2-Cliente con más préstamos saldados.\n3-Salir\nIngrese opcion: ","\nError.",1,sizeof(int),1,sizeCliente,3,&option);
+		switch(option)
+		{
+		case 1:
+			for(j=0;j<sizeCliente;j++)
+			{
+				if( arrayCliente[j].isEmptyCliente == 1)
+					continue;
+				if(arrayCliente[j].masPrestamoActivo > mayorCliente)
+				{
+					mayorCliente = arrayCliente[j].masPrestamoActivo;
+					idCliente = arrayCliente[j].idCliente;
+					strcpy(nombre,arrayCliente[j].nombreCliente);
+					strcpy(apellido,arrayCliente[j].apellidoCliente);
+					strcpy(cuil,arrayCliente[j].cuilCliente);
+
+				}
+			}
+			printf("\nID: %d\nNombre: %s\nApellido: %s\nCuil: %s\nCliente con más préstamos activos: %d",
+			            	                   idCliente,nombre,apellido,cuil,mayorCliente);
+			retorno = 0;
+			break;
+		case 2:
+			for(j=0;j<sizeCliente;j++)
+			{
+				if( arrayCliente[j].isEmptyCliente == 1)
+					continue;
+				if(arrayCliente[j].masPrestamoSaldo > mayorCliente)
+				{
+					mayorCliente = arrayCliente[j].masPrestamoSaldo;
+					idCliente = arrayCliente[j].idCliente;
+					strcpy(nombre,arrayCliente[j].nombreCliente);
+					strcpy(apellido,arrayCliente[j].apellidoCliente);
+					strcpy(cuil,arrayCliente[j].cuilCliente);
+
+				}
+			}
+			printf("\nID: %d\nNombre: %s\nApellido: %s\nCuil: %s\nCliente con más préstamos activos: %d",
+					idCliente,nombre,apellido,cuil,mayorCliente);
+			retorno = 0;
+			break;
+		case 3:
+			break;
+		default: printf("\nIngrese un numero entre el 1 y el 3\n");
+		}
+
+		retorno = 0;
+	}
 	return retorno;
 }

@@ -72,7 +72,7 @@ int main(void)
 			imprimirPrestamos(arrayPrestamo,QTY_PRESTAMO,arrayCliente,QTY_CLIENTE);
 			break;
 		case 9:
-
+			informeClientes(arrayCliente,QTY_CLIENTE);
 			break;
 
 		}

@@ -18,4 +18,6 @@ int imprimirClientes(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayC
 
 int imprimirPrestamos(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
 
+int informeClientes(eCliente arrayCliente[],int sizeCliente);
+
 #endif /* INFORMES_H_ */
