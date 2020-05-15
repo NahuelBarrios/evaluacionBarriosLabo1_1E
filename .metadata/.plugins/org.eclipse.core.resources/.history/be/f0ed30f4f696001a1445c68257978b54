@@ -16,6 +16,4 @@ int reanudarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayC
 
 int imprimirClientes(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
 
-int imprimirPrestamos(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
-
 #endif /* INFORMES_H_ */

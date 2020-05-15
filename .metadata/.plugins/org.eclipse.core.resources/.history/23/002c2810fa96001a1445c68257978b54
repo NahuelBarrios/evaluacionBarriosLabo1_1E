@@ -187,21 +187,7 @@ int imprimirPrestamos(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente array
 		{
 			if(arrayPrestamo[i].isEmptyPrestamo == 1)
 				continue;
-			if(strcmp(arrayPrestamo[i].estadoPrestamo,"ACTIVO") == 0)
-			{
-				for(j=0;j<sizeCliente;j++)
-				{
-					if( arrayCliente[j].isEmptyCliente == 1)
-						continue;
-					if(arrayPrestamo[i].idCliente == arrayCliente[j].idCliente)
-					{
-						printf("\n****************************************\nId Prestamo: %d\nId Cliente: %d\nImporte: %.2f\nCant Cuotas: %d\nEstado: %s\nCuil de cliente: %s\n*********************************************",
-								arrayPrestamo[i].idPrestamo,arrayPrestamo[i].idCliente,arrayPrestamo[i].importePrestamo,arrayPrestamo[i].cuotasPrestamo,arrayPrestamo[i].estadoPrestamo,arrayCliente[j].cuilCliente);
 
-					}
-				}
-
-			}
 		}
 		retorno = 0;
 	}

@@ -195,8 +195,8 @@ int imprimirPrestamos(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente array
 						continue;
 					if(arrayPrestamo[i].idCliente == arrayCliente[j].idCliente)
 					{
-						printf("\n****************************************\nId Prestamo: %d\nId Cliente: %d\nImporte: %.2f\nCant Cuotas: %d\nEstado: %s\nCuil de cliente: %s\n*********************************************",
-								arrayPrestamo[i].idPrestamo,arrayPrestamo[i].idCliente,arrayPrestamo[i].importePrestamo,arrayPrestamo[i].cuotasPrestamo,arrayPrestamo[i].estadoPrestamo,arrayCliente[j].cuilCliente);
+						printf("\n*********************************************\nID: %d\nNombre: %s\nApellido: %s\nCuil: %s\nid Prestamo: %d\nPrestamo: %s\n*********************************************",
+								arrayCliente[j].idCliente,arrayCliente[j].nombreCliente,arrayCliente[j].apellidoCliente,arrayCliente[j].cuilCliente,arrayPrestamo[i].idPrestamo,arrayPrestamo[i].estadoPrestamo);
 
 					}
 				}

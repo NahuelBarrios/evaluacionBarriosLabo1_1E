@@ -69,9 +69,6 @@ int main(void)
 			imprimirClientes(arrayPrestamo,QTY_PRESTAMO,arrayCliente,QTY_CLIENTE);
 			break;
 		case 8:
-			imprimirPrestamos(arrayPrestamo,QTY_PRESTAMO,arrayCliente,QTY_CLIENTE);
-			break;
-		case 9:
 
 			break;
 

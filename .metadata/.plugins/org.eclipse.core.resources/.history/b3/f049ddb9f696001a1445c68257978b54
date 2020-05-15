@@ -40,7 +40,7 @@ int main(void)
 	while(opcion !=10)
 	{
 		utn_getUnsignedInt("\n****************************************\nMENU\n1-Alta cliente\n2-Modificar datos de cliente\n3-Baja de cliente\n4-Préstamo\
-				\n5-Saldar préstamo\n6-Reanudar préstamo\n7-Imprimir Clientes\n8-Imprimir préstamos\nSeleccione opcion:",
+				\n5-Saldar préstamo\n6-Reanudar préstamo\n7-Imprimir Clientes\nSeleccione opcion:",
 				"\nError\n",1,sizeof(int),1,12,3,&opcion);
 
 		switch(opcion)
@@ -67,12 +67,6 @@ int main(void)
 			break;
 		case 7:
 			imprimirClientes(arrayPrestamo,QTY_PRESTAMO,arrayCliente,QTY_CLIENTE);
-			break;
-		case 8:
-			imprimirPrestamos(arrayPrestamo,QTY_PRESTAMO,arrayCliente,QTY_CLIENTE);
-			break;
-		case 9:
-
 			break;
 
 		}
