@@ -13,7 +13,11 @@
 #include <string.h>
 #include "utn.h"
 #include "cliente.h"
+#include "prestamo.h"
+#include "informes.h"
+
 #define QTY_CLIENTE 50
+#define QTY_PRESTAMO 50
 
 int main(void)
 {
@@ -23,11 +27,15 @@ int main(void)
 	inicializarCliente(arrayCliente,QTY_CLIENTE);
 
 	hardCodeCliente(arrayCliente,QTY_CLIENTE,1,"Nahuel","Barrios","20-42463697-6");
-	hardCodeCliente(arrayCliente,QTY_CLIENTE,1,"Candelaria","Scanavino","27-42454456-4");
-	hardCodeCliente(arrayCliente,QTY_CLIENTE,1,"Lucas","Gabriel","20-35234565-3");
+	hardCodeCliente(arrayCliente,QTY_CLIENTE,2,"Candelaria","Scanavino","27-42454456-4");
+	hardCodeCliente(arrayCliente,QTY_CLIENTE,3,"Lucas","Gabriel","20-35234565-3");
+
+	ePrestamo arrayPrestamo[QTY_PRESTAMO];
+	inicializarPrestamo(arrayPrestamo,QTY_PRESTAMO);
 
 	int opcion = 0;
 	int idCliente = 0;
+	int idPrestamo = 0;
 
 	while(opcion !=10)
 	{
@@ -44,6 +52,9 @@ int main(void)
 			break;
 		case 3:
 
+			break;
+		case 4:
+			altaPrestamo(arrayPrestamo,QTY_PRESTAMO,&idPrestamo,arrayCliente,QTY_CLIENTE);
 			break;
 
 		}

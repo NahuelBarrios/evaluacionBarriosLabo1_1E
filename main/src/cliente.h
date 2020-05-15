@@ -18,16 +18,17 @@ typedef struct
 
 }eCliente;
 
+//***********************************************************************************************************************************
 int inicializarCliente(eCliente array[], int size);
 
 void hardCodeCliente(eCliente array[],int size,int id,char nombre[],char apellido[],char cuil[]);
-
+//***********************************************************************************************************************************
 int altaCliente(eCliente array[], int size, int* contadorID);
 
 int buscarEmptyCliente(eCliente array[], int size, int* posicion);
-
+//***********************************************************************************************************************************
 int modificarCliente(eCliente array[], int sizeArray);
 
 int buscarIdCliente(eCliente array[], int size, int valorBuscado, int* posicion);
-
+//***********************************************************************************************************************************
 #endif /* CLIENTE_H_ */

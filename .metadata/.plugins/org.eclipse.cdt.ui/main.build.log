@@ -1,8 +1,9 @@
-00:34:42 **** Incremental Build of configuration Debug for project main ****
+01:01:22 **** Incremental Build of configuration Debug for project main ****
 Info: Internal Builder is used for build
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
-gcc -o main.exe "src\\cliente.o" "src\\main.o" "src\\utn.o" 
+gcc -o main.exe "src\\cliente.o" "src\\informes.o" "src\\main.o" "src\\prestamo.o" "src\\utn.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file main.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
 
-00:34:53 Build Finished. 0 errors, 0 warnings. (took 11s.442ms)
+01:01:22 Build Failed. 1 errors, 0 warnings. (took 755ms)
 

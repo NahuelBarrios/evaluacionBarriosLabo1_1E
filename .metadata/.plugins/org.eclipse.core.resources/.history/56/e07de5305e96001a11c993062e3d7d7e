@@ -1,0 +1,17 @@
+/*
+ * prestamo.h
+ *
+ *  Created on: 15 may. 2020
+ *      Author: Nahu_
+ */
+
+#ifndef PRESTAMO_H_
+#define PRESTAMO_H_
+
+typedef struct
+{
+
+
+}ePrestamo;
+
+#endif /* PRESTAMO_H_ */

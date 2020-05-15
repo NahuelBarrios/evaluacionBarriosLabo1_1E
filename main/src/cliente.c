@@ -101,10 +101,10 @@ int modificarCliente(eCliente array[], int sizeArray)
                 utn_getChar("\nModificar:\nN-Modificar nombre\nA-Modificar Apellido\nC-Modificar cuil\nS-Salir","\nError",'A','Z',1,&opcion);
                 switch(opcion)
                 {
-                    case 'A':
+                    case 'N':
                     	utn_getTexto("\nIngrese el nuevo nombre: ","\nError",1,51,1,array[posicion].nombreCliente);
                     	break;
-                    case 'B':
+                    case 'A':
                     	utn_getTexto("\nIngrese el nuevo apellido: ","\nError",1,51,1,array[posicion].apellidoCliente);
                         break;
                     case 'C':
@@ -142,3 +142,5 @@ int buscarIdCliente(eCliente array[], int size, int valorBuscado, int* posicion)
     }
     return retorno;
 }
+
+//***********************************************************************************************************************************

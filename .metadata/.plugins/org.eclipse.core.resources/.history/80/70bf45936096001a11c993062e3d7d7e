@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "utn.h"
+#include "cliente.h"
+#include "prestamo.h"
+#include "informes.h"
+
+int altaPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo, int* contadorID,eCliente arrayCliente[],int sizeCliente)
+{
+    int retorno=-1;
+    int posicion;
+    int bufferIdCliente;
+    int posicion2;
+
+    if(arrayPrestamo!=NULL && sizePrestamo>0 && contadorID!=NULL && arrayCliente!=NULL && sizeCliente>0)
+    {
+        if(buscarEmptyPrestamo(arrayPrestamo,sizePrestamo,&posicion)==-1)
+        {
+            printf("\nNo hay lugares vacios");
+        }
+        else
+        {
+        	utn_getUnsignedInt("\nIngrese el id Abonado: ","\nError.",1,sizeof(int),1,sizePrestamo,3,&bufferIdCliente);
+        	if(buscarIdCliente(arrayCliente,sizeCliente,bufferIdCliente,&posicion2)==-1)
+        	{
+        		printf("\nNo Existe ese Id\n");
+        	}
+
+        	else
+        	{
+        	// Si existe Cargo lo siguiente
+            (*contadorID)++;
+            arrayPrestamo[posicion].idPrestamo=*contadorID;
+            arrayPrestamo[posicion].isEmptyPrestamo=0;
+            arrayPrestamo[posicion].idCliente=bufferIdCliente;
+            utn_getFloat("\nImporte: ","\nError",1,100000,1,100000,3,&arrayPrestamo[posicion].importePrestamo);
+            utn_getUnsignedInt("\nCantidad de cuotas: ","\nError",1,sizeof(int),1,1,1,&arrayPrestamo[posicion].cuotasPrestamo);
+            printf("\n\nId Prestamo: %d\nid Cliente: %d\nImporte: %.2f\nCant de cuotas: %d",
+            		arrayPrestamo[posicion].idPrestamo,arrayPrestamo[posicion].idCliente,arrayPrestamo[posicion].importePrestamo,arrayPrestamo[posicion].cuotasPrestamo);
+            retorno=0;
+        	}
+        }
+    }
+    return retorno;
+}
