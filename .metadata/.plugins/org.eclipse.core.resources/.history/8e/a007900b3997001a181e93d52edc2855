@@ -6,8 +6,6 @@
 #include "prestamo.h"
 #include "informes.h"
 
-// La gran mayoria lo hice en esta biblioteca, porque se me hacia mas facil realizarlo asi. Espero no me juegue en contra! Anda todo 100% probado.
-
 int bajaCliente(eCliente arrayCliente[],int sizeCliente,ePrestamo arrayPrestamo[], int sizePrestamo)
 {
 	int retorno = -1;
