@@ -52,7 +52,7 @@ int altaCliente(eCliente array[], int size, int* contadorID)
             array[posicion].masPrestamoSaldo=0;
             utn_getTexto("\nIngrese el nombre del cliente: ","\nError",1,51,3,array[posicion].nombreCliente);
             utn_getTexto("\nIngrese el apellido del cliente: ","\nError",1,51,3,array[posicion].apellidoCliente);
-            utn_getTexto("\nIngrese el cuil del cliente: ","\nError",1,51,3,array[posicion].cuilCliente);
+            utn_getTexto("\nIngrese el cuil del cliente: ","\nError",1,14,3,array[posicion].cuilCliente);
 
             printf("\nID: %d\nNombre: %s\nApellido: %s\nCuil: %s",
                    array[posicion].idCliente,array[posicion].nombreCliente,array[posicion].apellidoCliente,array[posicion].cuilCliente);
@@ -112,7 +112,7 @@ int modificarCliente(eCliente array[], int sizeArray)
                     	utn_getTexto("\nIngrese el nuevo apellido: ","\nError",1,51,1,array[posicion].apellidoCliente);
                         break;
                     case 'C':
-                    	utn_getTexto("\nIngrese el nuevo cuil: ","\nError",1,51,1,array[posicion].cuilCliente);
+                    	utn_getTexto("\nIngrese el nuevo cuil: ","\nError",1,14,1,array[posicion].cuilCliente);
                         break;
                     case 'S':
                         break;
