@@ -8,6 +8,8 @@
 #ifndef INFORMES_H_
 #define INFORMES_H_
 
+int bajaCliente(eCliente arrayCliente[],int sizeCliente,ePrestamo arrayPrestamo[], int sizePrestamo);
+
 int realizarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo, int* contadorID,eCliente arrayCliente[],int sizeCliente);
 
 int saldarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
@@ -19,5 +21,7 @@ int imprimirClientes(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayC
 int imprimirPrestamos(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
 
 int informeClientes(eCliente arrayCliente[],int sizeCliente);
+
+int informePrestamo(ePrestamo arrayPrestamo[], int sizePrestamo);
 
 #endif /* INFORMES_H_ */

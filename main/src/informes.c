@@ -7,6 +7,91 @@
 #include "informes.h"
 
 
+
+//3) Baja de cliente: Se ingresa el ID del cliente y se listarán todos los préstamos de
+//dicho cliente. Luego se preguntará si se quiere confirmar la eliminación, la cual
+//implicará la eliminación de todos los préstamos y del cliente.
+
+int bajaCliente(eCliente arrayCliente[],int sizeCliente,ePrestamo arrayPrestamo[], int sizePrestamo)
+{
+	int retorno = -1;
+	int bufferIdCliente;
+	int i,j;
+	int posicion;
+	int option;
+
+	if(arrayCliente != NULL && sizeCliente>0 && arrayPrestamo!= NULL && sizePrestamo>0)
+	{
+		utn_getUnsignedInt("\nIngrese el id Cliente: ","\nError.",1,sizeof(int),1,sizePrestamo,3,&bufferIdCliente);
+		if(buscarIdCliente(arrayCliente,sizeCliente,bufferIdCliente,&posicion)==-1)
+		{
+			printf("\nNo Existe ese Id\n");
+		}
+		else
+		{
+			for(i=0;i<sizePrestamo;i++)
+			{
+				if(arrayPrestamo[i].isEmptyPrestamo == 1)
+					continue;
+				if(arrayPrestamo[i].idCliente == bufferIdCliente)
+				{
+					printf("\n\nId Prestamo: %d\nid Cliente: %d\nImporte: %.2f\nCant de cuotas: %d\nEstado de prestamo: %s",
+					            		arrayPrestamo[posicion].idPrestamo,arrayPrestamo[posicion].idCliente,arrayPrestamo[posicion].importePrestamo,
+										arrayPrestamo[posicion].cuotasPrestamo,arrayPrestamo[posicion].estadoPrestamo);
+				}
+
+			}
+
+			utn_getUnsignedInt("\nDesea eliminar este cliente?\n1-Si\n2-No\nElija una opcion: ","\nError.",1,sizeof(int),1,sizePrestamo,3,&option);
+			switch(option)
+			{
+				case 1:
+					for(i=0;i<sizePrestamo;i++)
+					{
+						if(arrayPrestamo[i].isEmptyPrestamo == 1)
+							continue;
+						if(arrayPrestamo[i].idCliente == bufferIdCliente)
+						{
+							arrayPrestamo[i].idPrestamo = 0;
+							arrayPrestamo[i].idCliente = 0;
+							arrayPrestamo[i].importePrestamo = 0;
+							arrayPrestamo[i].cuotasPrestamo = 0;
+							strcpy(arrayPrestamo[i].estadoPrestamo,"");
+							arrayPrestamo[i].isEmptyPrestamo = 1;
+
+						}
+					}
+
+					for(j=0;j<sizeCliente;j++)
+					{
+						if(arrayCliente[i].isEmptyCliente == 1)
+							continue;
+						if(arrayCliente[j].idCliente == bufferIdCliente)
+						{
+							arrayCliente[j].idCliente = 0;
+							strcpy(arrayCliente[j].nombreCliente,"");
+							strcpy(arrayCliente[j].apellidoCliente,"");
+							strcpy(arrayCliente[j].cuilCliente,"");
+							arrayCliente[j].masPrestamoActivo = 0;
+							arrayCliente[j].masPrestamoSaldo = 0;
+							arrayCliente[j].isEmptyCliente = 1;
+						}
+					}
+
+					break;
+				case 2:
+					printf("\nElijió No.\n");
+					break;
+				default: printf("\nIngrese la opcion 1 o 2.\n");
+			}
+
+		}
+		retorno = 0;
+	}
+
+	return retorno;
+}
+
 //***********************************************************************************************************************************
 int realizarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo, int* contadorID,eCliente arrayCliente[],int sizeCliente)
 {
@@ -38,9 +123,9 @@ int realizarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo, int* contadorI
             arrayPrestamo[posicion].idCliente=bufferIdCliente;
             utn_getFloat("\nImporte: ","\nError",1,100000,1,100000,3,&arrayPrestamo[posicion].importePrestamo);
             utn_getUnsignedInt("\nCantidad de cuotas: ","\nError",1,sizeof(int),1,10000,3,&arrayPrestamo[posicion].cuotasPrestamo);
-            printf("\n\nId Prestamo: %d\nid Cliente: %d\nImporte: %.2f\nCant de cuotas: %d\nEstado de prestamo: %s",
+            printf("\n\nId Prestamo: %d\nid Cliente: %d\nImporte: %.2f\nCant de cuotas: %d",
             		arrayPrestamo[posicion].idPrestamo,arrayPrestamo[posicion].idCliente,arrayPrestamo[posicion].importePrestamo,
-					arrayPrestamo[posicion].cuotasPrestamo,arrayPrestamo[posicion].estadoPrestamo);
+					arrayPrestamo[posicion].cuotasPrestamo);
             retorno=0;
         	}
         }
@@ -236,8 +321,6 @@ int informeClientes(eCliente arrayCliente[],int sizeCliente)
 
 	if(arrayCliente != NULL && sizeCliente>0)
 	{
-		//a) Cliente con más préstamos activos.
-		//b) Cliente con más préstamos saldados.
 		utn_getUnsignedInt("\nSu estado esta: \n1-Cliente con más préstamos activos.\n2-Cliente con más préstamos saldados.\n3-Salir\nIngrese opcion: ","\nError.",1,sizeof(int),1,sizeCliente,3,&option);
 		switch(option)
 		{
@@ -283,6 +366,39 @@ int informeClientes(eCliente arrayCliente[],int sizeCliente)
 			break;
 		default: printf("\nIngrese un numero entre el 1 y el 3\n");
 		}
+
+		retorno = 0;
+	}
+	return retorno;
+}
+
+//***********************************************************************************************************************************
+
+int informePrestamo(ePrestamo arrayPrestamo[], int sizePrestamo)
+{
+	int retorno = -1;
+	int i;
+	float importe;
+
+	if(arrayPrestamo != NULL && sizePrestamo > 0)
+	{
+		utn_getFloat("\nIngrese un Importe: ","\nError",1,100000,1,100000,3,&importe);
+		while(importe<1000)
+		{
+			utn_getFloat("\nIngrese un Importe: ","\nError",1,100000,1,100000,3,&importe);
+		}
+
+		for(i=0;i<sizePrestamo;i++)
+		{
+			if(arrayPrestamo[i].isEmptyPrestamo == 1)
+				continue;
+			if(arrayPrestamo[i].importePrestamo== importe)
+			{
+				printf("\n*******************************************\nid Prestamo: %d\nImporte: %.2f",arrayPrestamo[i].idPrestamo,arrayPrestamo[i].importePrestamo);
+			}
+
+		}
+
 
 		retorno = 0;
 	}
