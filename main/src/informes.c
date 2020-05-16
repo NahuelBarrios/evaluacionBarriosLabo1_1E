@@ -8,6 +8,7 @@
 
 // La gran mayoria lo hice en esta biblioteca, porque se me hacia mas facil realizarlo asi. Espero no me juegue en contra! Anda todo 100% probado.
 
+//***********************************************************************************************************************************
 int bajaCliente(eCliente arrayCliente[],int sizeCliente,ePrestamo arrayPrestamo[], int sizePrestamo)
 {
 	int retorno = -1;
@@ -168,7 +169,7 @@ int saldarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCli
 				printf("\nSu prestamo se encuentra: %s",arrayPrestamo[posicion].estadoPrestamo);
 				acumuladorSaldo = arrayCliente[auxIdCliente].masPrestamoSaldo + 1;
 				arrayCliente[auxIdCliente].masPrestamoSaldo = acumuladorSaldo;
-				printf("\Cant Saldos de ese cliente: %d",arrayCliente[auxIdCliente].masPrestamoSaldo);
+				printf("\nCant Saldos de ese cliente: %d",arrayCliente[auxIdCliente].masPrestamoSaldo);
 				break;
 			case 2:
 				break;
@@ -221,7 +222,7 @@ int reanudarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayC
 				printf("\nSu prestamo se encuentra: %s",arrayPrestamo[posicion].estadoPrestamo);
 				acumuladorActivos = arrayCliente[auxIdCliente].masPrestamoActivo + 1;
 				arrayCliente[auxIdCliente].masPrestamoActivo = acumuladorActivos;
-				printf("\Cant de renaudo: %d\n",arrayCliente[auxIdCliente].masPrestamoActivo);
+				printf("\nCant de renaudo: %d\n",arrayCliente[auxIdCliente].masPrestamoActivo);
 				break;
 			case 2:
 				break;
@@ -354,7 +355,7 @@ int informeClientes(eCliente arrayCliente[],int sizeCliente)
 
 				}
 			}
-			printf("\n***************************************\nID: %d\nNombre: %s\nApellido: %s\nCuil: %s\nCliente con más préstamos activos: %d",
+			printf("\n***************************************\nID: %d\nNombre: %s\nApellido: %s\nCuil: %s\nCliente con más préstamos saldados: %d",
 					idCliente,nombre,apellido,cuil,mayorCliente);
 			retorno = 0;
 			break;

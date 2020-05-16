@@ -1,0 +1,85 @@
+/*
+ * informes.h
+ *
+ *  Created on: 15 may. 2020
+ *      Author: Nahu_
+ */
+
+#ifndef INFORMES_H_
+#define INFORMES_H_
+
+//***********************************************************************************************************************************
+/** \brief se realiza una baja de cliente con todos los prestamos que este
+ * tenga activo.
+ * \param arrayCliente[] eCliente array de clientes
+ * \param sizeCliente int Longitud de la matriz cliente
+ * \param arrayPrestamo[] ePrestamo array de prestamos
+ * \param sizePrestamo int Longitud de la matriz prestamo
+ * \return int Retorna (-1) si el Error es [Longitud inválida o puntero NULO] - Retorna (0) si esta todo Ok
+ */
+int bajaCliente(eCliente arrayCliente[],int sizeCliente,ePrestamo arrayPrestamo[], int sizePrestamo);
+//***********************************************************************************************************************************
+/** \brief Permite crear un nuevo prestamo(alta)
+ * \param arrayPrestamo[] ePrestamo array de prestamos
+ * \param sizePrestamo int Longitud de la matriz prestamo
+ * \param contadorID int* puntero de un contador de id autoincremental.
+ * \param arrayCliente[] eCliente array de clientes
+ * \param sizeCliente int Longitud de la matriz cliente
+ * \return int Retorna (-1) si el Error es [Longitud inválida o puntero NULO] - Retorna (0) si esta todo Ok
+ */
+int realizarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo, int* contadorID,eCliente arrayCliente[],int sizeCliente);
+//***********************************************************************************************************************************
+/** \brief Se pedirá el ID del préstamo y se imprimirá la información del
+ * cliente al que pertenece, luego se pedirá confirmación para cambiarse de estado y se
+ * cambiará al estado "saldado".
+ * \param arrayPrestamo[] ePrestamo array de prestamos
+ * \param sizePrestamo int Longitud de la matriz prestamo
+ * \param arrayCliente[] eCliente array de clientes
+ * \param sizeCliente int Longitud de la matriz cliente
+ * \return int Retorna (-1) si el Error es [Longitud inválida o puntero NULO] - Retorna (0) si esta todo Ok
+ */
+int saldarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
+//***********************************************************************************************************************************
+/** \brief Se pedirá el ID del préstamo y se imprimirá la información del
+ * cliente al que pertenece, luego se pedirá confirmación para cambiarse de estado y se
+ * cambiará al estado "activo".
+ * \param arrayPrestamo[] ePrestamo array de prestamos
+ * \param sizePrestamo int Longitud de la matriz prestamo
+ * \param arrayCliente[] eCliente array de clientes
+ * \param sizeCliente int Longitud de la matriz cliente
+ * \return int Retorna (-1) si el Error es [Longitud inválida o puntero NULO] - Retorna (0) si esta todo Ok
+ */
+int reanudarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
+//***********************************************************************************************************************************
+/** \brief Se imprimirá una lista de clientes con todos sus datos junto con
+ * la cantidad de préstamos activos que posee.
+ * \param arrayPrestamo[] ePrestamo array de prestamos
+ * \param sizePrestamo int Longitud de la matriz prestamo
+ * \param arrayCliente[] eCliente array de clientes
+ * \param sizeCliente int Longitud de la matriz cliente
+ * \return int Retorna (-1) si el Error es [Longitud inválida o puntero NULO] - Retorna (0) si esta todo Ok
+ */
+int imprimirClientes(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
+//***********************************************************************************************************************************
+/** \brief Se imprimirá una lista de préstamos activos con todos sus
+datos junto con el c.u.i.l. del cliente correspondiente.
+ * \param arrayPrestamo[] ePrestamo array de prestamos
+ * \param sizePrestamo int Longitud de la matriz prestamo
+ * \param arrayCliente[] eCliente array de clientes
+ * \param sizeCliente int Longitud de la matriz cliente
+ * \return int Retorna (-1) si el Error es [Longitud inválida o puntero NULO] - Retorna (0) si esta todo Ok
+ */
+int imprimirPrestamos(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
+//***********************************************************************************************************************************
+/** \brief Para indicar que todas las posiciones en la matriz están vacías,
+ * esta función pone el campo isEmptyCliente en TRUE en todas las
+ * posiciones de la matriz
+ * \param array[] eCliente array de clientes
+ * \param size int Longitud de la matriz
+ * \return int Retorna (-1) si el Error es [Longitud inválida o puntero NULO] - Retorna (0) si esta todo Ok
+ */
+int informeClientes(eCliente arrayCliente[],int sizeCliente);
+
+int informePrestamo(ePrestamo arrayPrestamo[], int sizePrestamo);
+//***********************************************************************************************************************************
+#endif /* INFORMES_H_ */

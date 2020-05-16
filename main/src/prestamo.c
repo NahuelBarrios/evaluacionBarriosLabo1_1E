@@ -58,3 +58,5 @@ int buscarIdPrestamo(ePrestamo array[], int size, int valorBuscado, int* posicio
     }
     return retorno;
 }
+
+//***********************************************************************************************************************************
