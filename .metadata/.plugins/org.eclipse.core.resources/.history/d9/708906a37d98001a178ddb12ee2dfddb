@@ -233,17 +233,6 @@ int reanudarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayC
 			switch(option)
 			{
 			case 1:
-				if(strcmp(arrayPrestamo[posicion].estadoPrestamo,"SALDADO")==0)
-				{
-					printf("\nEste prestamo ya esta saldado.\n");
-					break;
-				}
-				if(strcmp(arrayPrestamo[posicion].estadoPrestamo,"ACTIVO")==0)
-				{
-					printf("\nEste prestamo ya esta activo.\n");
-					break;
-				}
-
 				strcpy(arrayPrestamo[posicion].estadoPrestamo,"ACTIVO");
 				printf("\nSu prestamo se encuentra: %s",arrayPrestamo[posicion].estadoPrestamo);
 				acumuladorActivos = arrayCliente[auxIdCliente].masPrestamoActivo + 1;

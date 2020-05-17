@@ -238,9 +238,9 @@ int reanudarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayC
 					printf("\nEste prestamo ya esta saldado.\n");
 					break;
 				}
-				if(strcmp(arrayPrestamo[posicion].estadoPrestamo,"ACTIVO")==0)
+				if(strcmp(arrayPrestamo[posicion].estadoPrestamo,"SALDADO")==0)
 				{
-					printf("\nEste prestamo ya esta activo.\n");
+					printf("\nEste prestamo ya esta saldado.\n");
 					break;
 				}
 
