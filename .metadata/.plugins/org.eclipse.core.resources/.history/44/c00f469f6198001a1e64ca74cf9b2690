@@ -1,7 +1,7 @@
 /*
  ============================================================================
  Name        : main.c
- Author      : Barrios Nahuel
+ Author      : 
  Version     :
  Copyright   : Your copyright notice
  Description : Hello World in C, Ansi-style
@@ -14,7 +14,7 @@
 #include "utn.h"
 #include "cliente.h"
 #include "prestamo.h"
-#include "informe.h"
+#include "informes.h"
 
 #define QTY_CLIENTE 50
 #define QTY_PRESTAMO 50
@@ -79,10 +79,12 @@ int main(void)
 		case 10:
 			informePrestamo(arrayPrestamo,QTY_PRESTAMO);
 			break;
-		case 11:
-			printf("\nGracias vuelva pronto!!.\n");
 		}
+
+
 	}
+
+
 
 	return 0;
 }

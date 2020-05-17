@@ -1,7 +1,7 @@
 /*
  ============================================================================
  Name        : main.c
- Author      : Barrios Nahuel
+ Author      : 
  Version     :
  Copyright   : Your copyright notice
  Description : Hello World in C, Ansi-style
@@ -14,7 +14,7 @@
 #include "utn.h"
 #include "cliente.h"
 #include "prestamo.h"
-#include "informe.h"
+#include "informes.h"
 
 #define QTY_CLIENTE 50
 #define QTY_PRESTAMO 50
@@ -27,11 +27,11 @@ int main(void)
 	inicializarCliente(arrayCliente,QTY_CLIENTE);
 
 	//Hardcodeo de clientes.
-	//hardCodeCliente(arrayCliente,QTY_CLIENTE,1,"Nahuel","Barrios","20-42463697-6");
-	//hardCodeCliente(arrayCliente,QTY_CLIENTE,2,"Candelaria","Scanavino","27-42454456-4");
-	//hardCodeCliente(arrayCliente,QTY_CLIENTE,3,"Lucas","Gabriel","20-35234565-3");
-	//hardCodeCliente(arrayCliente,QTY_CLIENTE,4,"Federico","Scanavino","20-30223455-3");
-	//hardCodeCliente(arrayCliente,QTY_CLIENTE,5,"Ezreal","Plumaluz","20-01010101-3");
+	hardCodeCliente(arrayCliente,QTY_CLIENTE,1,"Nahuel","Barrios","20-42463697-6");
+	hardCodeCliente(arrayCliente,QTY_CLIENTE,2,"Candelaria","Scanavino","27-42454456-4");
+	hardCodeCliente(arrayCliente,QTY_CLIENTE,3,"Lucas","Gabriel","20-35234565-3");
+	hardCodeCliente(arrayCliente,QTY_CLIENTE,4,"Federico","Scanavino","20-30223455-3");
+	hardCodeCliente(arrayCliente,QTY_CLIENTE,5,"Ezreal","Plumaluz","20-01010101-3");
 
 	ePrestamo arrayPrestamo[QTY_PRESTAMO];
 	inicializarPrestamo(arrayPrestamo,QTY_PRESTAMO);
@@ -79,10 +79,12 @@ int main(void)
 		case 10:
 			informePrestamo(arrayPrestamo,QTY_PRESTAMO);
 			break;
-		case 11:
-			printf("\nGracias vuelva pronto!!.\n");
 		}
+
+
 	}
+
+
 
 	return 0;
 }

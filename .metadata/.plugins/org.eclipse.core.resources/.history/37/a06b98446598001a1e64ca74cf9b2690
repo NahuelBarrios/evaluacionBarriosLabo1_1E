@@ -1,0 +1,29 @@
+/*
+ * informe.h
+ *
+ *  Created on: 17 may. 2020
+ *      Author: Nahu_
+ */
+
+#ifndef INFORME_H_
+#define INFORME_H_
+
+//***********************************************************************************************************************************
+/** \brief Informa : Cliente con más préstamos activos. && Cliente con más préstamos saldados.
+ * \param array[] eCliente arrayCliente de clientes
+ * \param sizeCliente int Longitud de la matriz
+ * \return int Retorna (-1) si el Error es [Longitud inválida o puntero NULO] - Retorna (0) si esta todo Ok
+ */
+int informeClientes(eCliente arrayCliente[],int sizeCliente);
+
+/** \brief Informa : Cantidad de préstamos de importe mayor a 1000: Se ingresará el importe y
+ * se imprimirá la cantidad de préstamos activos con ese importe.
+ * \param arrayPrestamo[] ePrestamo array de prestamos
+ * \param sizePrestamo int Longitud de la matriz prestamo
+ * \return int Retorna (-1) si el Error es [Longitud inválida o puntero NULO] - Retorna (0) si esta todo Ok
+ */
+int informePrestamo(ePrestamo arrayPrestamo[], int sizePrestamo);
+//***********************************************************************************************************************************
+
+
+#endif /* INFORME_H_ */

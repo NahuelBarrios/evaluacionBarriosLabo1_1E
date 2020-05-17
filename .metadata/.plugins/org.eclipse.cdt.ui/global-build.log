@@ -1,30 +1,178 @@
-Info: Nothing to build for main
-Info: Nothing to build for main
-17:01:42 **** Incremental Build of configuration Debug for project main ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
-gcc -o main.exe "src\\cliente.o" "src\\informes.o" "src\\main.o" "src\\prestamo.o" "src\\utn.o" 
-17:01:55 **** Incremental Build of configuration Debug for project main ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
-gcc -o main.exe "src\\cliente.o" "src\\informes.o" "src\\main.o" "src\\prestamo.o" "src\\utn.o" 
-Info: Nothing to build for main
-17:02:38 **** Incremental Build of configuration Debug for project main ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
-gcc -o main.exe "src\\cliente.o" "src\\informes.o" "src\\main.o" "src\\prestamo.o" "src\\utn.o" 
-Info: Nothing to build for main
-17:03:39 **** Incremental Build of configuration Debug for project main ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
-gcc -o main.exe "src\\cliente.o" "src\\informes.o" "src\\main.o" "src\\prestamo.o" "src\\utn.o" 
-c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file main.exe: Permission denied
-collect2.exe: error: ld returned 1 exit status
-17:04:41 **** Incremental Build of configuration Debug for project main ****
+14:25:21 **** Incremental Build of configuration Debug for project main ****
 Info: Internal Builder is used for build
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\informes.o" "..\\src\\informes.c" 
+..\src\informes.c: In function 'informePrestamo':
+..\src\informes.c:392:76: error: incompatible type for argument 1 of 'strcmp'
+  392 |    if(arrayPrestamo[i].importePrestamo== importe && strcmp(arrayPrestamo[i].importePrestamo,"ACTIVO") == 0)
+      |                                                            ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+      |                                                                            |
+      |                                                                            float
+In file included from ..\src\informes.c:3:
+c:\mingw\include\string.h:77:46: note: expected 'const char *' but argument is of type 'float'
+   77 | _CRTIMP __cdecl __MINGW_NOTHROW  int strcmp (const char *, const char *) __MINGW_ATTRIB_PURE;
+      |                                              ^~~~~~~~~~~~
+14:26:22 **** Incremental Build of configuration Debug for project main ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\informes.o" "..\\src\\informes.c" 
 gcc -o main.exe "src\\cliente.o" "src\\informes.o" "src\\main.o" "src\\prestamo.o" "src\\utn.o" 
 Info: Nothing to build for main
+14:33:19 **** Incremental Build of configuration Debug for project main ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\informe.o" "..\\src\\informe.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\flag.o" "..\\src\\flag.c" 
+In file included from ..\src\flag.c:6:
+..\src\flag.h:20:57: error: unknown type name 'ePrestamo'
+   20 | int bajaCliente(eCliente arrayCliente[],int sizeCliente,ePrestamo arrayPrestamo[], int sizePrestamo);
+      |                                                         ^~~~~~~~~
+..\src\flag.h:30:22: error: unknown type name 'ePrestamo'
+   30 | int realizarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo, int* contadorID,eCliente arrayCliente[],int sizeCliente);
+      |                      ^~~~~~~~~
+..\src\flag.h:41:20: error: unknown type name 'ePrestamo'
+   41 | int saldarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
+      |                    ^~~~~~~~~
+..\src\flag.h:52:22: error: unknown type name 'ePrestamo'
+   52 | int reanudarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
+      |                      ^~~~~~~~~
+..\src\flag.h:62:22: error: unknown type name 'ePrestamo'
+   62 | int imprimirClientes(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
+      |                      ^~~~~~~~~
+..\src\flag.h:72:23: error: unknown type name 'ePrestamo'
+   72 | int imprimirPrestamos(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
+      |                       ^~~~~~~~~
+14:36:49 **** Incremental Build of configuration Debug for project main ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\flag.o" "..\\src\\flag.c" 
+In file included from ..\src\flag.c:6:
+..\src\flag.h:20:57: error: unknown type name 'ePrestamo'
+   20 | int bajaCliente(eCliente arrayCliente[],int sizeCliente,ePrestamo arrayPrestamo[], int sizePrestamo);
+      |                                                         ^~~~~~~~~
+..\src\flag.h:30:22: error: unknown type name 'ePrestamo'
+   30 | int realizarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo, int* contadorID,eCliente arrayCliente[],int sizeCliente);
+      |                      ^~~~~~~~~
+..\src\flag.h:41:20: error: unknown type name 'ePrestamo'
+   41 | int saldarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
+      |                    ^~~~~~~~~
+..\src\flag.h:52:22: error: unknown type name 'ePrestamo'
+   52 | int reanudarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
+      |                      ^~~~~~~~~
+..\src\flag.h:62:22: error: unknown type name 'ePrestamo'
+   62 | int imprimirClientes(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
+      |                      ^~~~~~~~~
+..\src\flag.h:72:23: error: unknown type name 'ePrestamo'
+   72 | int imprimirPrestamos(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
+      |                       ^~~~~~~~~
+14:36:51 **** Incremental Build of configuration Debug for project main ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\flag.o" "..\\src\\flag.c" 
+In file included from ..\src\flag.c:6:
+..\src\flag.h:20:57: error: unknown type name 'ePrestamo'
+   20 | int bajaCliente(eCliente arrayCliente[],int sizeCliente,ePrestamo arrayPrestamo[], int sizePrestamo);
+      |                                                         ^~~~~~~~~
+..\src\flag.h:30:22: error: unknown type name 'ePrestamo'
+   30 | int realizarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo, int* contadorID,eCliente arrayCliente[],int sizeCliente);
+      |                      ^~~~~~~~~
+..\src\flag.h:41:20: error: unknown type name 'ePrestamo'
+   41 | int saldarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
+      |                    ^~~~~~~~~
+..\src\flag.h:52:22: error: unknown type name 'ePrestamo'
+   52 | int reanudarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
+      |                      ^~~~~~~~~
+..\src\flag.h:62:22: error: unknown type name 'ePrestamo'
+   62 | int imprimirClientes(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
+      |                      ^~~~~~~~~
+..\src\flag.h:72:23: error: unknown type name 'ePrestamo'
+   72 | int imprimirPrestamos(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
+      |                       ^~~~~~~~~
+14:37:46 **** Incremental Build of configuration Debug for project main ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\flag.o" "..\\src\\flag.c" 
+In file included from ..\src\flag.c:6:
+..\src\flag.h:20:57: error: unknown type name 'ePrestamo'
+   20 | int bajaCliente(eCliente arrayCliente[],int sizeCliente,ePrestamo arrayPrestamo[], int sizePrestamo);
+      |                                                         ^~~~~~~~~
+..\src\flag.h:30:22: error: unknown type name 'ePrestamo'
+   30 | int realizarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo, int* contadorID,eCliente arrayCliente[],int sizeCliente);
+      |                      ^~~~~~~~~
+..\src\flag.h:41:20: error: unknown type name 'ePrestamo'
+   41 | int saldarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
+      |                    ^~~~~~~~~
+..\src\flag.h:52:22: error: unknown type name 'ePrestamo'
+   52 | int reanudarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
+      |                      ^~~~~~~~~
+..\src\flag.h:62:22: error: unknown type name 'ePrestamo'
+   62 | int imprimirClientes(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
+      |                      ^~~~~~~~~
+..\src\flag.h:72:23: error: unknown type name 'ePrestamo'
+   72 | int imprimirPrestamos(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCliente[],int sizeCliente);
+      |                       ^~~~~~~~~
+14:39:16 **** Incremental Build of configuration Debug for project main ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c:16:10: fatal error: flag.h: No such file or directory
+   16 | #include "flag.h"
+      |          ^~~~~~~~
+compilation terminated.
+14:39:25 **** Incremental Build of configuration Debug for project main ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\informe.o" "..\\src\\informe.c" 
+gcc -o main.exe "src\\cliente.o" "src\\informe.o" "src\\main.o" "src\\prestamo.o" "src\\utn.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file main.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+14:39:38 **** Incremental Build of configuration Debug for project main ****
+Info: Internal Builder is used for build
+gcc -o main.exe "src\\cliente.o" "src\\informe.o" "src\\main.o" "src\\prestamo.o" "src\\utn.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file main.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+14:39:42 **** Incremental Build of configuration Debug for project main ****
+Info: Internal Builder is used for build
+gcc -o main.exe "src\\cliente.o" "src\\informe.o" "src\\main.o" "src\\prestamo.o" "src\\utn.o" 
+14:42:18 **** Incremental Build of configuration Debug for project main ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\informe.o" "..\\src\\informe.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\prestamo.o" "..\\src\\prestamo.c" 
+gcc -o main.exe "src\\cliente.o" "src\\informe.o" "src\\main.o" "src\\prestamo.o" "src\\utn.o" 
+Info: Nothing to build for main
+14:49:58 **** Incremental Build of configuration Debug for project main ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\informe.o" "..\\src\\informe.c" 
+gcc -o main.exe "src\\cliente.o" "src\\informe.o" "src\\main.o" "src\\prestamo.o" "src\\utn.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file main.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+14:50:19 **** Incremental Build of configuration Debug for project main ****
+Info: Internal Builder is used for build
+gcc -o main.exe "src\\cliente.o" "src\\informe.o" "src\\main.o" "src\\prestamo.o" "src\\utn.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file main.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+14:50:29 **** Incremental Build of configuration Debug for project main ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\informe.o" "..\\src\\informe.c" 
+..\src\informe.c: In function 'saldarPrestamo':
+..\src\informe.c:172:50: warning: statement with no effect [-Wunused-value]
+  172 |      arrayCliente[auxIdCliente].masPrestamoActivo-1;
+      |      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+gcc -o main.exe "src\\cliente.o" "src\\informe.o" "src\\main.o" "src\\prestamo.o" "src\\utn.o" 
+14:53:17 **** Incremental Build of configuration Debug for project main ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\informe.o" "..\\src\\informe.c" 
+gcc -o main.exe "src\\cliente.o" "src\\informe.o" "src\\main.o" "src\\prestamo.o" "src\\utn.o" 
+Info: Nothing to build for main
+15:00:10 **** Incremental Build of configuration Debug for project main ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\informe.o" "..\\src\\informe.c" 
+gcc -o main.exe "src\\cliente.o" "src\\informe.o" "src\\main.o" "src\\prestamo.o" "src\\utn.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file main.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+15:00:14 **** Incremental Build of configuration Debug for project main ****
+Info: Internal Builder is used for build
+gcc -o main.exe "src\\cliente.o" "src\\informe.o" "src\\main.o" "src\\prestamo.o" "src\\utn.o" 
 Info: Nothing to build for main
 Info: Nothing to build for main
 Info: Nothing to build for main
+Info: Nothing to build for main
+15:08:31 **** Incremental Build of configuration Debug for project main ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o main.exe "src\\cliente.o" "src\\informe.o" "src\\main.o" "src\\prestamo.o" "src\\utn.o" 
