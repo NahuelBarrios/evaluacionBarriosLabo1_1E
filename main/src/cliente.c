@@ -27,6 +27,7 @@ void hardCodeCliente(eCliente array[],int size,int id,char nombre[],char apellid
 	strcpy(array[id].cuilCliente, cuil);
 	array[id].masPrestamoActivo=0;
 	array[id].masPrestamoSaldo=0;
+	array[id].prestamosTotales=0;
 	array[id].isEmptyCliente = 0;
 
 }
@@ -50,6 +51,7 @@ int altaCliente(eCliente array[], int size, int* contadorID)
             array[posicion].isEmptyCliente=0;
             array[posicion].masPrestamoActivo=0;
             array[posicion].masPrestamoSaldo=0;
+            array[posicion].prestamosTotales=0;
             utn_getTexto("\nIngrese el nombre del cliente: ","\nError",1,51,3,array[posicion].nombreCliente);
             utn_getTexto("\nIngrese el apellido del cliente: ","\nError",1,51,3,array[posicion].apellidoCliente);
             utn_getTexto("\nIngrese el cuil del cliente: ","\nError",1,14,3,array[posicion].cuilCliente);

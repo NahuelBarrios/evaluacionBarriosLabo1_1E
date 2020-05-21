@@ -1,0 +1,65 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "utn.h"
+#include "cliente.h"
+#include "prestamo.h"
+#include "informes.h"
+
+int altaPrestamo(eLlamada array[], int size, int* contadorID,eAbonado array2[],int size2,int* motivo1,int* motivo2,int* motivo3)
+{
+    int retorno=-1;
+    int posicion;
+    int contReclamo= 0;
+    int bufferIdAbonado;
+    int posicion2;
+
+    if(array!=NULL && size>0 && contadorID!=NULL && array2!=NULL && size2>0) // Valido
+    {
+        if(buscarEmptyLlamada(array,size,&posicion)==-1) // Recorro el isEmpty para averiguar si hay espacio
+        {
+            printf("\nNo hay lugares vacios");
+        }
+        else
+        {
+        	utn_getUnsignedInt("\nIngrese el id Abonado: ","\nError.",1,sizeof(int),1,size,3,&bufferIdAbonado); // Pido un ud
+        	if(buscarIdAbonado(array2,size2,bufferIdAbonado,&posicion2)==-1) // Valido si existe o no
+        	{
+        		printf("\nNo Existe ese Id\n");
+        	}
+
+        	else
+        	{
+        	// Si existe Cargo lo siguiente
+            (*contadorID)++;
+            array[posicion].idLlamada=*contadorID;
+            array[posicion].isEmptyLlamada=0;
+            array[posicion].idAbonado=bufferIdAbonado;
+            contReclamo=array2[bufferIdAbonado].contReclamos + 1;
+            array2[bufferIdAbonado].contReclamos = contReclamo;
+            printf("ContReclamos: %d",array2[bufferIdAbonado].contReclamos);
+            utn_getUnsignedInt("\nIngrese motivo: 1-FALLA 3G / 2-FALLA LTE / 3-FALLA EQUIPO: ","\nError",1,sizeof(int),1,4,3,&array[posicion].motivo);
+            if(array[posicion].motivo==1)
+           	{
+            	(*motivo1)++;
+      		}
+            if(array[posicion].motivo == 2)
+            {
+            	(*motivo2)++;
+            }
+            if(array[posicion].motivo == 3)
+            {
+            	(*motivo3)++;
+            }
+
+            strcpy(array[posicion].estado,"EN CURSO");
+            printf("\nSu estado se encuentra EN CURSO\n");
+
+            printf("\n\nId Llamada: %d\nid Abonado: %d\nMotivo 1-FALLA 3G / 2-FALLA LTE / 3-FALLA EQUIPO: %d\nEstado: %s",
+                   array[posicion].idLlamada,array[posicion].idAbonado,array[posicion].motivo,array[posicion].estado);
+            retorno=0;
+        	}
+        }
+    }
+    return retorno;
+}

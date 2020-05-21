@@ -1,0 +1,47 @@
+/*
+ ============================================================================
+ Name        : main.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "utn.h"
+#include "cliente.h"
+#define QTY_CLIENTE 50
+
+int main(void)
+{
+	eCliente arrayCliente[QTY_CLIENTE];
+	inicializarCliente(arrayCliente,QTY_CLIENTE);
+
+	int opcion = 0;
+	int idCliente = 0;
+
+	while(opcion !=10)
+	{
+		utn_getUnsignedInt("\n****************************************\nMENU\n1-Alta cliente\nSeleccione opcion:",
+				"\nError\n",1,sizeof(int),1,12,3,&opcion);
+
+		switch(opcion)
+		{
+		case 1:
+			altaCliente(arrayCliente,QTY_CLIENTE,);
+
+			break;
+
+
+		}
+
+
+	}
+
+
+
+	return 0;
+}

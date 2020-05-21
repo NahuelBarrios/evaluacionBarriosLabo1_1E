@@ -16,6 +16,7 @@ typedef struct
 	char cuilCliente[15];
 	int masPrestamoActivo;
 	int masPrestamoSaldo;
+	int prestamosTotales;
 	int isEmptyCliente;
 
 }eCliente;

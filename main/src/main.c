@@ -27,9 +27,9 @@ int main(void)
 	inicializarCliente(arrayCliente,QTY_CLIENTE);
 
 	//Hardcodeo de clientes para facilitar su correccion.
-	//hardCodeCliente(arrayCliente,QTY_CLIENTE,1,"Nahuel","Barrios","20-42463697-6");
-	//hardCodeCliente(arrayCliente,QTY_CLIENTE,2,"Candelaria","Scanavino","27-42454456-4");
-	//hardCodeCliente(arrayCliente,QTY_CLIENTE,3,"Lucas","Gabriel","20-35234565-3");
+	hardCodeCliente(arrayCliente,QTY_CLIENTE,1,"Nahuel","Barrios","20-42463697-6");
+	hardCodeCliente(arrayCliente,QTY_CLIENTE,2,"Candelaria","Scanavino","27-42454456-4");
+	hardCodeCliente(arrayCliente,QTY_CLIENTE,3,"Lucas","Gabriel","20-35234565-3");
 	//hardCodeCliente(arrayCliente,QTY_CLIENTE,4,"Federico","Scanavino","20-30223455-3");
 	//hardCodeCliente(arrayCliente,QTY_CLIENTE,5,"Ezreal","Plumaluz","20-01010101-3");
 

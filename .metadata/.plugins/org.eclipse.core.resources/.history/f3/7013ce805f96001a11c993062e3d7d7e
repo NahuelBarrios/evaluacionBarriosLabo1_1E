@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "utn.h"
+#include "cliente.h"
+#include "prestamo.h"
+#include "informes.h"
+
+int altaPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo, int* contadorID,eCliente arrayCliente[],int sizeCliente)
+{
+    int retorno=-1;
+    int posicion;
+    int contReclamo= 0;
+    int bufferIdCliente;
+    int posicion2;
+
+    if(arrayPrestamo!=NULL && sizePrestamo>0 && contadorID!=NULL && arrayCliente!=NULL && sizeCliente>0)
+    {
+        if(buscarEmptyPrestamo(arrayPrestamo,sizePrestamo,&posicion)==-1)
+        {
+            printf("\nNo hay lugares vacios");
+        }
+        else
+        {
+        	utn_getUnsignedInt("\nIngrese el id Abonado: ","\nError.",1,sizeof(int),1,sizePrestamo,3,&bufferIdCliente);
+        	if(buscarIdCliente(arrayCliente,sizeCliente,bufferIdCliente,&posicion2)==-1)
+        	{
+        		printf("\nNo Existe ese Id\n");
+        	}
+
+        	else
+        	{
+        	// Si existe Cargo lo siguiente
+            (*contadorID)++;
+            arrayPrestamo[posicion].idPrestamo=*contadorID;
+            arrayPrestamo[posicion].isEmptyLlamada=0;
+            arrayPrestamo[posicion].idAbonado=bufferIdAbonado;
+            contReclamo=array2[bufferIdAbonado].contReclamos + 1;
+            array2[bufferIdAbonado].contReclamos = contReclamo;
+            printf("ContReclamos: %d",array2[bufferIdAbonado].contReclamos);
+            utn_getUnsignedInt("\nIngrese motivo: 1-FALLA 3G / 2-FALLA LTE / 3-FALLA EQUIPO: ","\nError",1,sizeof(int),1,4,3,&array[posicion].motivo);
+            strcpy(array[posicion].estado,"EN CURSO");
+            printf("\nSu estado se encuentra EN CURSO\n");
+
+            printf("\n\nId Llamada: %d\nid Abonado: %d\nMotivo 1-FALLA 3G / 2-FALLA LTE / 3-FALLA EQUIPO: %d\nEstado: %s",
+                   array[posicion].idLlamada,array[posicion].idAbonado,array[posicion].motivo,array[posicion].estado);
+            retorno=0;
+        	}
+        }
+    }
+    return retorno;
+}

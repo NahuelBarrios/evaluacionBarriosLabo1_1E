@@ -1,1 +1,6 @@
-Info: Nothing to build for main
+19:33:58 **** Incremental Build of configuration Debug for project main ****
+Info: Internal Builder is used for build
+gcc -o main.exe "src\\cliente.o" "src\\informe.o" "src\\main.o" "src\\prestamo.o" "src\\utn.o" 
+
+19:33:58 Build Finished. 0 errors, 0 warnings. (took 834ms)
+
