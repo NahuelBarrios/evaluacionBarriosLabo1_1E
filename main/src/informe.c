@@ -462,7 +462,7 @@ int informePrestamo(ePrestamo arrayPrestamo[], int sizePrestamo)
 			{
 				if(arrayPrestamo[i].isEmptyPrestamo == 1)
 					continue;
-				if(arrayPrestamo[i].cuotasPrestamo >= 12 && strcmp(arrayPrestamo[i].estadoPrestamo,"SALDADO")==0)
+				if(arrayPrestamo[i].cuotasPrestamo == 12 && strcmp(arrayPrestamo[i].estadoPrestamo,"SALDADO")==0)
 				{
 					printf("\n***********************\nid Prestamo: %d\nid Cliente: %d\nCant Cuotas: %d\nEstado: %s",arrayPrestamo[i].idPrestamo,arrayPrestamo[i].idCliente,arrayPrestamo[i].cuotasPrestamo,arrayPrestamo[i].estadoPrestamo);
 				}

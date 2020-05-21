@@ -171,6 +171,7 @@ int saldarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayCli
 				if(strcmp(arrayPrestamo[posicion].estadoPrestamo,"SALDADO")==0)
 				{
 					printf("\nEste prestamo ya esta saldado.\n");
+					break;
 				}
 
 				if(strcmp(arrayPrestamo[posicion].estadoPrestamo,"ACTIVO")==0)
@@ -232,6 +233,17 @@ int reanudarPrestamo(ePrestamo arrayPrestamo[], int sizePrestamo,eCliente arrayC
 			switch(option)
 			{
 			case 1:
+				if(strcmp(arrayPrestamo[posicion].estadoPrestamo,"SALDADO")==0)
+				{
+					printf("\nEste prestamo ya esta saldado.\n");
+					break;
+				}
+				if(strcmp(arrayPrestamo[posicion].estadoPrestamo,"ACTIVO")==0)
+				{
+					printf("\nEste prestamo ya esta activo.\n");
+					break;
+				}
+
 				strcpy(arrayPrestamo[posicion].estadoPrestamo,"ACTIVO");
 				printf("\nSu prestamo se encuentra: %s",arrayPrestamo[posicion].estadoPrestamo);
 				acumuladorActivos = arrayCliente[auxIdCliente].masPrestamoActivo + 1;
@@ -332,7 +344,7 @@ int informeClientes(eCliente arrayCliente[],int sizeCliente)
 
 	if(arrayCliente != NULL && sizeCliente>0)
 	{
-		utn_getUnsignedInt("\nSu estado esta: \n1-Cliente con más préstamos activos.\n2-Cliente con más préstamos saldados.\n3-Salir\nIngrese opcion: ","\nError.",1,sizeof(int),1,sizeCliente,3,&option);
+		utn_getUnsignedInt("\nSu estado esta: \n1-Cliente con más préstamos activos.\n2-Cliente con más préstamos saldados.\n3-Cliente con más préstamos.\n4-Salir\nIngrese opcion: ","\nError.",1,sizeof(int),1,sizeCliente,3,&option);
 		switch(option)
 		{
 		case 1:
@@ -373,9 +385,32 @@ int informeClientes(eCliente arrayCliente[],int sizeCliente)
 					idCliente,nombre,apellido,cuil,mayorCliente);
 			retorno = 0;
 			break;
-		case 3:
+		case 3://c) Cliente con más préstamos.
+			for(j=0;j<sizeCliente;j++)
+			{
+				if( arrayCliente[j].isEmptyCliente == 1)
+				continue;
+
+				arrayCliente[j].prestamosTotales = arrayCliente[j].masPrestamoSaldo + arrayCliente[j].masPrestamoActivo;
+
+				if(arrayCliente[j].prestamosTotales > mayorCliente)
+				{
+					mayorCliente = arrayCliente[j].prestamosTotales;
+					idCliente = arrayCliente[j].idCliente;
+					strcpy(nombre,arrayCliente[j].nombreCliente);
+					strcpy(apellido,arrayCliente[j].apellidoCliente);
+					strcpy(cuil,arrayCliente[j].cuilCliente);
+				}
+
+			}
+
+			printf("\n***************************************\nID: %d\nNombre: %s\nApellido: %s\nCuil: %s\nCliente con más préstamos: %d",
+					idCliente,nombre,apellido,cuil,mayorCliente);
 			break;
-		default: printf("\nIngrese un numero entre el 1 y el 3\n");
+		case 4:
+			printf("\nSalió.\n");
+			break;
+		default: printf("\nIngrese un numero entre el 1 y el 4\n");
 		}
 
 		retorno = 0;
@@ -390,9 +425,21 @@ int informePrestamo(ePrestamo arrayPrestamo[], int sizePrestamo)
 	int retorno = -1;
 	int i;
 	float importe;
+	int option = 0;
+	int auxCantCuotas;
+
+/*b) Préstamos de 12 cuotas saldados.
+ *
+ */
+
 
 	if(arrayPrestamo != NULL && sizePrestamo > 0)
 	{
+		utn_getUnsignedInt("\n1-Cantidad de préstamos de importe mayor a 1000\n2-Prestamos de 12 cuotas saldados.\n3-Prestamos por cuota\n4-Salir\nIngrese opcion: ","\nError.",1,sizeof(int),1,sizePrestamo,3,&option);
+
+		switch(option)
+		{
+		case 1:
 		utn_getFloat("\nIngrese un Importe mayor a 1000: ","\nError",1,100000,1,100000,3,&importe);
 		while(importe<1000)
 		{
@@ -408,6 +455,37 @@ int informePrestamo(ePrestamo arrayPrestamo[], int sizePrestamo)
 				printf("\n*******************************************\nid Prestamo: %d\nImporte: %.2f",arrayPrestamo[i].idPrestamo,arrayPrestamo[i].importePrestamo);
 			}
 
+		}
+		break;
+		case 2:
+			for(i=0;i<sizePrestamo;i++)
+			{
+				if(arrayPrestamo[i].isEmptyPrestamo == 1)
+					continue;
+				if(arrayPrestamo[i].cuotasPrestamo >= 12 && strcmp(arrayPrestamo[i].estadoPrestamo,"SALDADO")==0)
+				{
+					printf("\n***********************\nid Prestamo: %d\nid Cliente: %d\nCant Cuotas: %d\nEstado: %s",arrayPrestamo[i].idPrestamo,arrayPrestamo[i].idCliente,arrayPrestamo[i].cuotasPrestamo,arrayPrestamo[i].estadoPrestamo);
+				}
+
+			}
+			break;
+		case 3://c) Préstamos por cuotas: Se ingresará la cantidad de cuotas y se imprimirán la
+			//cantidad de préstamos activos con esa cantidad de cuotas.
+			utn_getUnsignedInt("\nCantidad de cuotas: ","\nError.",1,sizeof(int),1,sizePrestamo,3,&auxCantCuotas);
+			for(i=0;i<sizePrestamo;i++)
+			{
+				if(arrayPrestamo[i].isEmptyPrestamo == 1)
+					continue;
+				if(arrayPrestamo[i].cuotasPrestamo == auxCantCuotas && strcmp(arrayPrestamo[i].estadoPrestamo,"ACTIVO")== 0)
+				{
+					printf("\n***********************\nid Prestamo: %d\nid Cliente: %d\nCant Cuotas: %d\nEstado: %s",arrayPrestamo[i].idPrestamo,arrayPrestamo[i].idCliente,arrayPrestamo[i].cuotasPrestamo,arrayPrestamo[i].estadoPrestamo);
+				}
+			}
+			break;
+		case 4:
+			printf("\nSalió.\n");
+			break;
+		default: printf("\nIngrese un numero del 1 al 4.\n");
 		}
 
 
